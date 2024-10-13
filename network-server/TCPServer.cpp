@@ -97,6 +97,14 @@ int __cdecl main(void)
     }
 
     // Accept a client socket
+	// int accept(
+	//  // The socket descriptor that the server is listening on
+	//  _In_  SOCKET   s,
+	//
+	//  // A pointer to a sockaddr structure that will receive the address of the client
+	//  _Out_ sockaddr *addr,
+	//  _Inout_ int     *addrlen
+	// );
     ClientSocket = accept(ListenSocket, NULL, NULL);
     if (ClientSocket == INVALID_SOCKET) 
     {
@@ -137,6 +145,13 @@ int __cdecl main(void)
     } while (iResult > 0);
 
     // shutdown the connection since we're done
+	// int shutdown(
+	//  // The socket descriptor
+	//  _In_  SOCKET s,
+	//
+	//  // The type of shutdown
+	//  _In_  int    how
+	// );
     iResult = shutdown(ClientSocket, SD_SEND);
     if (iResult == SOCKET_ERROR) 
     {
